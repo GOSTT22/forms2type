@@ -1,0 +1,38 @@
+<form (ngSubmit)="onSubmit(temlateForm)" #temlateForm = "ngForm">
+    
+    <div class="formGroup">
+        <label for="name">Имя</label>
+        <input type="text" id="name" required name="name"
+        [(ngModel)]='people.name'
+        ngModel #name = 'ngModel'>
+        <div class="error" [hidden]='name.valid || name.pristine'>
+            Введите имя
+        </div>
+    </div>
+    
+    <div class="formGroup"> 
+        <label for="age">Возвраст</label>
+        <input type="number" id="age" required name="age"
+        [(ngModel)]='people.age'
+        ngModel #age = 'ngModel'>
+        <div class="error" [hidden]='age.valid || age.pristine'>
+            Введите возвраст
+        </div>
+    </div>
+    
+    <div class="formGroup">
+        <label for="phone">Телефон</label>
+        <input type="text" id="phone" name="phone"
+        [(ngModel)]='people.phone'
+        ngModel #phone = 'ngModel'>
+    </div>
+
+    <div class="formGroup">
+        <label for="children">Дети</label>
+        <input type="checkbox" id="children" name="children" class="check"
+        [(ngModel)]='people.children'
+        ngModel #children = 'ngModel'>
+    </div>
+    
+    <button type="submit" [disabled] = "temlateForm.invalid" [ngClass]="{'error': temlateForm.invalid}">Submit</button>
+</form>

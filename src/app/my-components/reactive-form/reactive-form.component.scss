@@ -1,0 +1,20 @@
+form {
+    padding: 10px;
+}
+.formGroup {
+    display: flex;
+    flex-direction: column;
+
+    .check {
+        width:10%
+    }
+
+    input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .error {
+        color: red;
+    }
+}

@@ -1,0 +1,30 @@
+<form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+
+    <div class="formGroup">
+        <label for="name">Имя</label>
+        <input id="name" type="text" formControlName="name" placeholder="Введите имя">
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error">
+            Введите имя
+        </div>
+    </div>
+    
+    <div class="formGroup">
+        <label for="age">Возвраст</label>
+        <input id="age" type="number" formControlName="age">
+        <div *ngIf="age.invalid && (age.dirty || age.touched)" class="error">
+            Введите возвраст
+        </div>
+    </div>
+    
+    <div class="formGroup">
+        <label for="phone">Телефон</label>
+        <input id="phone" type="text" formControlName="phone">
+    </div>
+
+    <div class="formGroup formGroup--check">
+        <label for="children">Дети</label>
+        <input id="children" type="checkbox" formControlName="children" class="check">
+    </div>
+
+    <button type="submit">Submit</button>
+</form>
