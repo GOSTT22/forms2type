@@ -1,5 +1,6 @@
 form {
-    padding: 10px;
+    padding: 15px;
+    width: 25%;
 
     .error {
         color: red;
@@ -10,13 +11,29 @@ form {
     flex-direction: column;
 
     .check {
-        width:10%
+        width:20%
     }
 
     
 
     input {
-        width: 100%;
+        width: 40%;
         margin-bottom: 10px;
     }
+}
+
+.delivery2{
+    display: flex;
+    flex-direction: column;
+   
+    
+    input {
+        width: 400px;
+        height: 70px;
+    }
+}
+
+.butt1{
+    margin-right: 10px;
+
 }

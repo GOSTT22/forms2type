@@ -1,30 +1,51 @@
 <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
-
+<fieldset>
     <div class="formGroup">
-        <label for="name">Имя</label>
-        <input id="name" type="text" formControlName="name" placeholder="Введите имя">
-        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error">
-            Введите имя
+        <label for="fio"><b>Введите ФИО:</b></label>
+        <input id="fio" type="text" formControlName="fio">
+        <div *ngIf="fio.invalid && (fio.dirty || fio.touched)" class="error">
+            Введите ФИО
         </div>
     </div>
     
     <div class="formGroup">
-        <label for="age">Возвраст</label>
-        <input id="age" type="number" formControlName="age">
-        <div *ngIf="age.invalid && (age.dirty || age.touched)" class="error">
-            Введите возвраст
+        <label for="password">Возвраст</label>
+        <input id="password" type="password" formControlName="password">
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error">
+            Введите пароль
         </div>
     </div>
     
-    <div class="formGroup">
-        <label for="phone">Телефон</label>
-        <input id="phone" type="text" formControlName="phone">
-    </div>
+    <div class="type"> 
+        <label for="disk"><b>Какой диск вы доджны получить?</b></label><br><br>
+        <input type="radio" name="disk"  value="cd" formControlName="disk"> <b>CD </b><br>
+        <input type="radio" name="disk"  value="dvd" formControlName="disk"> <b>DVD </b> 
+    </div><br>
 
-    <div class="formGroup formGroup--check">
-        <label for="children">Дети</label>
-        <input id="children" type="checkbox" formControlName="children" class="check">
-    </div>
+    <div class="type"> 
+        <label for="disk"><b>Какие обучающие курсы вы хотите видеть на диске?</b></label><br><br>
+        <div *ngFor="let item of people.courses">
+            <input type="checkbox" [name]="item.name" formControlName="courses" > {{item.name}} 
+        </div>
+    </div><br>
 
-    <button type="submit">Submit</button>
+    <div class="delivery">
+        <label for="delivery"><b>Выберите способ доставки:</b></label><br><br>
+        <select name="delivery" id="delivery">
+            <option [value]="item.value" [id]="item.value"  *ngFor="let item of people.delivery;let i=index" [selected]="people.delivery[i].selected" >{{item.name}}</option>
+        </select>
+    </div><br>
+
+    <div class="delivery2">
+        <label for="delivery2">Введите адрес для доставки:</label>
+        <input id="delivery2" type="text" formControlName="delivery2">
+        <div *ngIf="delivery2.invalid && (delivery2.dirty || delivery2.touched)" class="error">
+            Адресс...
+        </div>
+    </div><br>
+    
+    <button class="butt1" type="submit">Сделать заказ</button>
+    <button type="reset" >Отмена</button><br>
+
+</fieldset>
 </form>

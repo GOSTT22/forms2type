@@ -12,18 +12,23 @@ export class ReactiveFormComponent implements OnInit {
   people: IPeople;
   reactiveForm: FormGroup;
 
-  get name() { return this.reactiveForm.get('name'); }
-  get age() { return this.reactiveForm.get('age'); }
+  get fio() { return this.reactiveForm.get('fio'); }
+  get password() { return this.reactiveForm.get('password'); }
+  get delivery2() { return this.reactiveForm.get('delivery2'); }
+  get disk() { return this.reactiveForm.get('disk'); }
+
+  
 
   constructor() { }
 
   ngOnInit(): void {
     this.people = this.getPeopleData();
     this.reactiveForm = new FormGroup({
-      name: new FormControl(this.people.name, Validators.required),
-      age: new FormControl(this.people.age, Validators.required),
-      phone: new FormControl(this.people.phone),
-      children: new FormControl(this.people.children)
+      fio: new FormControl(this.people.fio, Validators.required),
+      password: new FormControl(this.people.password, Validators.required),
+      delivery2: new FormControl(this.people.delivery2, Validators.required),
+      disk: new FormControl(this.people.disk, Validators.required),
+      courses: new FormControl(this.people.courses, Validators.required),
     });
   }
 
@@ -33,7 +38,19 @@ export class ReactiveFormComponent implements OnInit {
   }
 
   getPeopleData(): IPeople {
-    return { name: 'Ivanov', age: 33, phone: '095 59 030 95', children: true }
+    return { 
+      fio: 'Ivanov',
+      password: '11223344',
+      delivery2: 'Михаила Бойчука 26',
+      disk: "cd",
+      courses: [{name: " Курсы по Photoshop", value: true},
+                {name: " Курсы по Adobe Dreamweaver", value: false},
+                {name: " Курсы по PHP", value: false}],
+
+      delivery: [{name: " Срочная", value: "quick", selected: false},
+                 {name: " Не срочная", value: "slow", selected: true}, 
+                 {name: " Курьером", value: "cuirer", selected: false}],
+    }
   }
 
 }

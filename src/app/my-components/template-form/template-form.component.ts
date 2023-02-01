@@ -18,25 +18,44 @@ export class TemplateFormComponent implements OnInit {
   }
 
   onSubmit(templateForm: NgForm): void {
+    console.log(templateForm);
+    // const fio = templateForm.controls['fio'].value;
+    // const password = templateForm.controls['password'].value;
+    // const delivery2 = templateForm.controls['delivery2'].value;
+    // const disk = templateForm.controls['disk'].value;
+    // const courses = templateForm.controls['courses'].value
+    // const delivery = templateForm.controls['delivery'].value
 
-    const name = templateForm.controls['name'].value;
-    const age = templateForm.controls['age'].value;
-    const phone = templateForm.controls['phone'].value;
-    const children = templateForm.controls['children'].value;
+    // const data = {
+    //   fio,
+    //   password,
+    //   delivery2,
+    //   disk,
+    //   courses,
+    //   delivery
+    // }
 
-    const data = {
-      name,
-      age,
-      phone,
-      children
-    }
+    const data = templateForm.value;
 
     console.log(data);
 
   }
 
   getPeopleData(): IPeople {
-    return { name: 'Ivanov', age: 33, phone: '095 59 030 95', children: true }
+    return {
+       fio: 'Ivanov',
+        password: '11223344',
+        delivery2: 'Михаила Бойчука 26',
+        disk: "dvd",
+        courses: [{name: " Курсы по Photoshop", value: true},
+                  {name: " Курсы по Adobe Dreamweaver", value: true},
+                  {name: " Курсы по PHP", value: false}],
+
+        delivery: [{name: " Срочная", value: "quick", selected: false},
+                  {name: " Не срочная", value: "slow", selected: true},
+                  {name: " Курьером", value: "cuirer", selected: false}],
+          }
+
   }
 
 }

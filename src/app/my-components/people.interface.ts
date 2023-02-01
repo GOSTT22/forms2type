@@ -1,6 +1,22 @@
 export interface IPeople {
-    name: string;
-    age: number;
-    phone: string;
-    children: boolean;
+    fio: string;
+    password: string;
+    delivery2: string;
+    disk: string;
+    courses: IDelivery[];
+    delivery: IDelivery2[];
+ 
 }
+interface IDelivery{
+    name: string;
+    value: boolean;
+}
+
+interface IDelivery2{
+    name: string;
+    value: string;
+    selected: boolean
+}
+
+
+

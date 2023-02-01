@@ -1,38 +1,66 @@
 <form (ngSubmit)="onSubmit(temlateForm)" #temlateForm = "ngForm">
-    
+    <fieldset>
+    <legend>Форма заказа</legend>
     <div class="formGroup">
-        <label for="name">Имя</label>
-        <input type="text" id="name" required name="name"
-        [(ngModel)]='people.name'
-        ngModel #name = 'ngModel'>
-        <div class="error" [hidden]='name.valid || name.pristine'>
-            Введите имя
+        <label for="fio"><b>Введите ФИО:</b></label>
+        <input type="text" id="fio" required name="fio"
+            [(ngModel)]='people.fio'
+            ngModel #fio = 'ngModel'>
+        <div class="error" [hidden]='fio.valid || fio.pristine'>
+            Введите ФИО
         </div>
-    </div>
+    </div><br>
     
     <div class="formGroup"> 
-        <label for="age">Возвраст</label>
-        <input type="number" id="age" required name="age"
-        [(ngModel)]='people.age'
-        ngModel #age = 'ngModel'>
-        <div class="error" [hidden]='age.valid || age.pristine'>
-            Введите возвраст
+        <label for="password"><b>Введите пароль:</b></label>
+        <input type="password" id="password" required name="password"
+            [(ngModel)]='people.password'
+            ngModel #password = 'ngModel'>
+        <div class="error" [hidden]='password.valid || password.pristine'>
+            Введите пароль
         </div>
-    </div>
-    
-    <div class="formGroup">
-        <label for="phone">Телефон</label>
-        <input type="text" id="phone" name="phone"
-        [(ngModel)]='people.phone'
-        ngModel #phone = 'ngModel'>
-    </div>
+    </div><br>
 
-    <div class="formGroup">
-        <label for="children">Дети</label>
-        <input type="checkbox" id="children" name="children" class="check"
-        [(ngModel)]='people.children'
-        ngModel #children = 'ngModel'>
-    </div>
+    <div class="type"> 
+        <label for="disk"><b>Какой диск вы доджны получить?</b></label><br><br>
+
+        <input type="radio"  name="disk" value="cd"
+            [(ngModel)]='people.disk'
+            ngModel #disk1 = 'ngModel'> <b>CD </b><br>
+        <input type="radio"  name="disk" value="dvd"
+            [(ngModel)]='people.disk'
+            ngModel #disk2 = 'ngModel'> <b>DVD </b> 
+    </div><br>
+
+    <div class="type"> 
+        <label for="disk"><b>Какие обучающие курсы вы хотите видеть на диске?</b></label><br><br>
+        <div *ngFor="let item of people.courses">
+            <input type="checkbox" [name]="item.name" [(ngModel)]='item.value'
+            ngModel #courses = 'ngModel' > {{item.name}} 
+        </div>
+        
+    </div><br>
+
+    <div class="delivery">
+        <label for="delivery"><b>Выберите способ доставки:</b></label><br><br>
+        <select name="delivery" ngModel #delivery = 'ngModel' >
+            <option [value]="item.value" [id]="item.value"  *ngFor="let item of people.delivery;let i=index" [selected]="people.delivery[i].selected" >{{item.name}}</option>
+
+        </select>
+    </div><br>
+
+    <div class="delivery2">
+        <label for="delivery2">Введите адрес для доставки:</label>
+        <input type="text" id="delivery2" name="delivery2" 
+        [(ngModel)]='people.delivery2' 
+        ngModel #delivery2 = 'ngModel'>
+        <div class="error" [hidden]='delivery2.valid || delivery2.pristine'>
+            Адресс...
+        </div>
+    </div><br>
     
-    <button type="submit" [disabled] = "temlateForm.invalid" [ngClass]="{'error': temlateForm.invalid}">Submit</button>
+        <button class="butt1" type="submit" [disabled] = "temlateForm.invalid" [ngClass]="{'error': temlateForm.invalid}">Сделать заказ</button>
+        <button type="reset" >Отмена</button><br>
+    </fieldset>
 </form>
+
